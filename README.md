@@ -28,14 +28,8 @@ A threshold (commonly **0.5**) is used to decide whether faces match.
 
 ##  Project Structure
 
-├── data/
-│   ├── anchor/      # Images captured from webcam (You)
-│   ├── positive/    # Images captured from webcam (You)
-│   └── negative/    # Images from external dataset (e.g., LFW)
-├── application_data/
-│   └── verification_images/
-├── Face_Recognition.ipynb  # Main Jupyter Notebook
-└── README.md
+<img width="601" height="336" alt="image" src="https://github.com/user-attachments/assets/41b2a037-485b-44de-8ba8-5a474694ba55" />
+
 
 
 ##  Data Setup
