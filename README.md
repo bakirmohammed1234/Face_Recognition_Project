@@ -1,26 +1,32 @@
-Siamese Network Face Recognition
-This project implements a Face Recognition system using a Siamese Neural Network. It is built with TensorFlow/Keras and performs one-shot image recognition by calculating the distance between an anchor image and a verification image.
+# Siamese Network Face Recognition
 
-📌 Project Overview
-Unlike traditional classification models that require thousands of images per class, this Siamese Network learns a "similarity function." It takes two images as input and outputs a similarity score:
+This project implements a Face Recognition system using a **Siamese Neural Network** built with **TensorFlow/Keras**.  
+It performs **one-shot facial recognition** by computing the distance between an **anchor image** and a **verification image**.
 
-1 (True): The faces belong to the same person.
+---
 
-0 (False): The faces belong to different people.
+##  Project Overview
 
-The model assumes a threshold (typically 0.5) to decide if the faces match.
+Unlike traditional classification models that require thousands of images per identity, a **Siamese Network** learns a *similarity function*.  
+It takes **two images** as input and outputs a similarity score:
 
-🛠 Tech Stack
-Language: Python 3.x
+- **1 (True)** → The two faces belong to the **same person**
+- **0 (False)** → The two faces belong to **different people**
 
-Deep Learning: TensorFlow, Keras
+A threshold (commonly **0.5**) is used to decide whether faces match.
 
-Computer Vision: OpenCV (cv2)
+---
 
-Data Manipulation: NumPy, Matplotlib
+##  Tech Stack
 
-📂 Project Structure
-Bash
+- **Language:** Python 3.x  
+- **Deep Learning:** TensorFlow, Keras  
+- **Computer Vision:** OpenCV (cv2)  
+- **Data Manipulation & Visualization:** NumPy, Matplotlib  
+
+---
+
+##  Project Structure
 
 ├── data/
 │   ├── anchor/      # Images captured from webcam (You)
@@ -30,62 +36,77 @@ Bash
 │   └── verification_images/
 ├── Face_Recognition.ipynb  # Main Jupyter Notebook
 └── README.md
-🚀 Getting Started
-1. Prerequisites
-Install the required dependencies:
 
-Bash
 
-pip install tensorflow opencv-python matplotlib numpy
-(Note: If you have a compatible NVIDIA GPU, ensure tensorflow-gpu is configured for faster training.)
+##  Data Setup
 
-2. Data Setup
-The project requires three types of data:
+The project requires **three categories of images**:
 
-Anchor: Input image (webcam).
+- **Anchor:**  
+  Image of the target person captured using the webcam.
 
-Positive: Matches the anchor (webcam).
+- **Positive:**  
+  Another image of the **same person** (also captured using the webcam).
 
-Negative: Different people (downloaded from the Labelled Faces in the Wild (LFW) dataset).
+- **Negative:**  
+  Images of **different people**, downloaded from the **Labelled Faces in the Wild (LFW)** dataset.
 
-To collect data: Run the data collection cells in the notebook.
+###  Collecting Your Own Data
 
-Press a to save an Anchor image.
+To collect training data, run the **data collection cells** inside the notebook.
 
-Press p to save a Positive image.
+Use the following keyboard shortcuts:
 
-3. Model Architecture
-The model uses a standard Siamese architecture:
+- Press **`a`** → Save an **Anchor** image  
+- Press **`p`** → Save a **Positive** image  
 
-Twin Networks: Two identical Convolutional Neural Networks (CNNs) share the same weights.
+##  Model Architecture
 
-Embeddings: Both networks output a 4096-dimensional feature vector (embedding).
+The model uses a standard **Siamese Network** architecture consisting of:
 
-L1 Distance Layer: Calculates the absolute difference between the two embeddings: |Embedding_1 - Embedding_2|.
+- **Twin Networks:**  
+  Two identical Convolutional Neural Networks (CNNs) that **share the same weights**.
 
-Prediction: A dense layer with a sigmoid activation outputs a score between 0 and 1.
+- **Embeddings:**  
+  Each network outputs a **4096-dimensional feature vector** (embedding).
 
-4. Training
-Open Face_Recognition.ipynb and run the training section.
+- **L1 Distance Layer:**  
+  Calculates the absolute difference between the two embeddings:  
+  `|Embedding_1 - Embedding_2|`.
 
-Loss Function: Binary Crossentropy
+- **Prediction Layer:**  
+  A dense layer with **sigmoid activation** outputs a similarity score between **0 and 1**.
+  
+<img width="683" height="234" alt="image" src="https://github.com/user-attachments/assets/eb247dbe-81c2-433c-b72b-5d678a3b9157" />
 
-Optimizer: Adam
+##  Training
 
-Metrics: Precision, Recall
+Open `Face_Recognition.ipynb` and run the training section.
 
-The model saves checkpoints during training to allow you to resume or use the model later.
+- **Loss Function:** Binary Crossentropy  
+- **Optimizer:** Adam  
+- **Metrics:** Precision, Recall  
 
-🎥 Real-Time Usage
-The project includes a real-time verification script using your webcam.
+The model saves checkpoints during training to allow you to **resume** or **reuse** the trained model later.
 
-The system captures a frame from the webcam.
+---
 
-It compares this frame against a folder of "verification" images.
+## Real-Time Usage
 
-If the verification threshold is met (e.g., >0.5 detection confidence and >0.5 verification accuracy), access is granted.
+The project includes a real-time verification script using your webcam:
 
-📄 References
-Based on the paper: Siamese Neural Networks for One-shot Image Recognition by Gregory Koch, Richard Zemel, and Ruslan Salakhutdinov.
+1. The system captures a frame from the webcam.  
+2. It compares this frame against a folder of **verification images**.  
+3. If the verification threshold is met (e.g., > 0.5 detection confidence **and** > 0.5 verification accuracy), **access is granted**.
 
-Dataset: Labelled Faces in the Wild (LFW)
+---
+
+##  References
+
+- Based on the paper:  
+  *Siamese Neural Networks for One-shot Image Recognition* by Gregory Koch, Richard Zemel, and Ruslan Salakhutdinov. https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf
+- Dataset: [Labelled Faces in the Wild (LFW)](http://vis-www.cs.umass.edu/lfw/)
+
+
+
+
